@@ -1,0 +1,38 @@
+<div class="col-lg-10">
+  <h1 >Product List </h1>
+  <br />
+  <button class="btn btn-primary" (click)="addproduct()"> Add Product </button>&nbsp; &nbsp;
+
+  
+  <br /> <br />
+  <div @myInsertRemoveTrigger *ngIf="isShown" class="insert-remove-container">
+    <p>The box is inserted</p>
+  </div>
+  <table class="table table-stripped table-responsive table-hover">
+      <thead>
+          <th >ID</th>
+          <th >Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          
+      </thead>
+      <tbody>
+          <tr *ngFor="let p of products">
+              <td>{{p.id}}</td>
+              <td >{{p.name}}</td>
+              <td>{{p.description}}</td>
+              <td>{{p.price}}</td>
+              <td>
+                  <button class="btn btn-danger" (click)="deleteproduct(p)">Delete</button> &nbsp; &nbsp;
+                  <button class="btn btn-danger"(click)="editproduct(p)">Edit</button>
+              </td>
+          </tr>
+          <tr *ngIf="!products || products.length==null">
+              <th colspan="5">
+                  <p class="text-right">
+                      Sorry no Prodcts's available ..!</p>
+              </th>
+          </tr>
+      </tbody>
+  </table>
+</div>
